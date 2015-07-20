@@ -1,27 +1,34 @@
 # frntn/x509-san
 
-Generate a valid, self-signed, x509v3 certificate for multiple URLs / IPs
+Generate a self-signed x509v3 certificate for use with multiple URLs / IPs
 
 ## Generate
 
-The following command will generate (and overwrite if they already exists) two files:
- - pkcs#8 private key : `frntn-x509-san.key`
- - x509v3 certificate : `frntn-x509-san.crt`
+#### Default values
 
-**You can (or should) change the `CRT_CN` and `CRT_SAN` values to fit your needs**
 ```bash
 curl -sSL https://raw.githubusercontent.com/frntn/x509-san/master/gencert.sh | CRT_CN="client.com" CRT_SAN="DNS.1:www.client.com,DNS.2:admin.client.com,IP.1:192.168.1.10,IP.2:10.0.0.234" bash
 ```
 
-## Check
+The above command will generate (and overwrite if they already exists) two files:
+ - pkcs#8 private key : `frntn-x509-san.key`
+ - x509v3 certificate : `frntn-x509-san.crt`
 
-You can check the certificate content by using the following standard `x509` command :
+And the certificate will look like *(screenshots from Chrome certificate viewer)*:
+![certificate-viewer-summary](cert-summary.png)
+![certificate-viewer-extensions-details](cert-details.png)
+
+#### Custom values
+
+You must **change the `CRT_CN` and `CRT_SAN` values** of the above command to fit your needs
+
+You can then check the certificate content by using the following standard `x509` command :
 
 ```bash
 openssl x509 -in frntn-x509-san.crt -noout -text
 ```
 
-## Secure the private key
+## Secure
 
 The generated private key is passwordless by default. 
 
