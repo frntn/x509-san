@@ -14,6 +14,14 @@ curl -sSL https://raw.githubusercontent.com/frntn/x509-san/master/gencert.sh | C
 
 Simply **change the `CRT_CN` and `CRT_SAN` values** of the above command to fit your needs...
 
+Additionally you can use any of these environment variables :
+ - `CRT_C` : Country value
+ - `CRT_L` : Locality value
+ - `CRT_O` : Organization value
+ - `CRT_OU` : Organizational Unit value
+ - `CRT_CN` : Common Name value
+ - `CRT_SAN` : SubjectAltName value
+
 #### Result
 
 The command will generate two files:
