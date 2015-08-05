@@ -4,7 +4,7 @@
 See https://github.com/frntn/x509-san/blob/master/README.md
 USAGE
 
-certname="frntn-x509-san"
+certname="${CRT_FILENAME:-"frntn-x509-san"}"
 openssl x509 \
     -in <(
         openssl req \
@@ -19,4 +19,4 @@ openssl x509 \
     -sha256 \
     -days 3650 \
     -out "${certname}.crt" \
-    -extfile <(echo "subjectAltName=${CRT_SAN:-"DNS.1:logs.example.com,DNS.2:metrics.example.com,IP.1:192.168.0.1,IP.2:10.0.0.50"}")
+    -extfile <(echo -e "basicConstraints=critical,CA:true,pathlen:0\nsubjectAltName=${CRT_SAN:-"DNS.1:logs.example.com,DNS.2:metrics.example.com,IP.1:192.168.0.1,IP.2:10.0.0.50"}")
