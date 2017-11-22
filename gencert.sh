@@ -14,7 +14,7 @@ openssl x509 \
             -newkey rsa:4096 \
             -nodes \
             -keyout "${certname}.key" \
-            -subj "/C=${CRT_C:-"FR"}/L=${CRT_L:-"Paris"}/O=${CRT_O:-"Ekino"}/OU=${CRT_OU:-"DevOps"}/CN=${CRT_CN:-"base.example.com"}"
+            -subj "/C=${CRT_C:-"FR"}/L=${CRT_L:-"Paris"}/O=${CRT_O:-"Frntn"}/OU=${CRT_OU:-"DevOps"}/CN=${CRT_CN:-"base.example.com"}"
         ) \
     -req \
     -signkey "${certname}.key" \
